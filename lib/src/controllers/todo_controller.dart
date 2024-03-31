@@ -5,20 +5,20 @@ import 'package:todo_list_api/src/repositories/todo_repository.dart';
 class TodoController {
   List<TodoModel> todos = [];
   final TodoRepository repository;
-  final state = ValueNotifier<State>(State.start);
+  final state = ValueNotifier<TodoState>(TodoState.start);
 
   TodoController([TodoRepository? repository])
       : repository = repository ?? TodoRepository();
 
   start() async {
-    state.value = State.loading;
+    state.value = TodoState.loading;
     try {
       todos = await repository.fetchAll();
-      state.value = State.success;
+      state.value = TodoState.success;
     } catch (e) {
-      state.value = State.error;
+      state.value = TodoState.error;
     }
   }
 }
 
-enum State { start, loading, success, error }
+enum TodoState { start, loading, success, error }

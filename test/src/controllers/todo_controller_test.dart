@@ -10,25 +10,25 @@ void main() {
   final controller = TodoController(repository);
 
   test('sem o await deve retornar loading como ultimo state', () async {
-    expect(controller.state.value, State.start);
+    expect(controller.state.value, TodoState.start);
     controller.start();
     //expect(controller.state.value, State.loading);
-    expect(controller.state.value, State.success);
+    expect(controller.state.value, TodoState.success);
   });
 
   test('com o await deve retornar success como ultimo state', () async {
-    expect(controller.state.value, State.start);
+    expect(controller.state.value, TodoState.start);
     await controller.start();
     //expect(controller.state.value, State.loading);
-    expect(controller.state.value, State.success);
+    expect(controller.state.value, TodoState.success);
   });
 
   test('causando erro', () async {
     when(() => repository.fetchAll()).thenThrow(Exception());
 
-    expect(controller.state.value, State.start);
+    expect(controller.state.value, TodoState.start);
     await controller.start();
     //expect(controller.state.value, State.loading);
-    expect(controller.state.value, State.error);
+    expect(controller.state.value, TodoState.error);
   });
 }
