@@ -9,7 +9,7 @@ class PageTile extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
-          
+          Navigator.of(context).pushNamed('ApiPage');
         },
         child: Container(
           height: 110,

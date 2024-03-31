@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'src/views/api_page.dart';
 import 'src/views/home_page.dart';
 
 void main() {
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/',
-      routes: {'/': (context) => const HomePage()},
+      routes: {
+        '/': (context) => const HomePage(),
+        'ApiPage' :(context) => const ApiPage()
+      },
     );
   }
 }
